@@ -1,17 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import Flex from './componetes/Flex'
-import Home from './paginas/home/Home'
-
+import Home from './paginas/home/Home';
+import './App.css';
+import React from 'react';
 
 function App() {
-  return(
+ 
+  return (
     <>
       <Home/>
-      {/*<Flex/>*/}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
