@@ -6,33 +6,30 @@ import { buscar, deletar } from '../../../services/Service'
 import { RotatingLines } from 'react-loader-spinner'
 
 function DeletarTema() {
-
+    
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const [tema, setTema] = useState<Tema>({} as Tema)
 
-    const navigate = useNavigate()
+    let navigate = useNavigate()
 
     const { id } = useParams<{ id: string }>()
 
     const { usuario, handleLogout } = useContext(AuthContext)
+
     const token = usuario.token;
 
     async function buscarPorId(id: string) {
         try {
-
             await buscar(`/temas/${id}`, setTema, {
                 headers: {
                     'Authorization': token
                 }
             })
-
         } catch (error: any) {
-
             if (error.toString().includes('403')) {
-
                 alert('O token expirou, favor logar novamente')
-                handleLogout()                                  
+                handleLogout()
             }
         }
     }
@@ -58,7 +55,7 @@ function DeletarTema() {
         setIsLoading(true)
 
         try {
-            await deletar(`/temas/${id}`, { 
+            await deletar(`/temas/${id}`, {
                 headers: {
                     'Authorization': token
                 }
